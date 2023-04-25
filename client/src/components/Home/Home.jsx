@@ -16,6 +16,14 @@ export default function Home(props)
             <div>
                 <h2>{props.name ? `welcome to - ${props.name}`: 'please login '}</h2>
             </div>
+             
+            <br />
+            <br />
+            <br />
+
+            <div>
+                  <h1><Link to='/sortingVisualizer'>sortingVisualizer</Link></h1>
+            </div>
         </div>
            
 

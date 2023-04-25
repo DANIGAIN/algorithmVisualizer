@@ -5,6 +5,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { useEffect, useState } from 'react';
 import { auth } from './firebase';
+import SortingVisualizer from './components/SortingVisualizer/SortingVisualizer'
 
 function App() {
    const [userName , setUserName] = useState('');
@@ -22,7 +23,7 @@ function App() {
          }
       });
 
-   },[])
+   },[]); 
 
 
    return (
@@ -32,6 +33,7 @@ function App() {
          <Route path='/' element={<Home name ={userName} />}>Home</Route>
          <Route path='/login' element={<Login/>}>Home</Route>
          <Route path='/signup' element={<Signup/>}>Home</Route>
+         <Route path='/sortingVisualizer' element={<SortingVisualizer/>}>sortingVisualizer</Route>
       </Routes>
       </BrowserRouter>
 
