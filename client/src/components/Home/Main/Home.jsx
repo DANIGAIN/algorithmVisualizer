@@ -3,14 +3,14 @@ import SortingVisualizer from '../../SortingVisualizer/SortingVisualizer';
 import { Link } from 'react-router-dom';
 import './style.css';
 import { useEffect } from 'react';
+import { Header } from '../Header/Header';
 
 export default function Home(props) {
 
     return (
         <>
             <div className='header'>
-                <h1><Link to='./signup'>signup</Link></h1>
-                <h1><Link to='./login'>login</Link></h1>
+                <Header/>
             </div>
             <div className="main">
                 <SortingVisualizer/>
