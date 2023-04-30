@@ -1,3 +1,4 @@
+//---------------------------------------------- Merge sort ------------------------------------------------------//
 export const getMargeSortAnimation = a => {
     const animation = [];
     const b = a.slice();
@@ -48,6 +49,42 @@ function meage(a, first, mid, last, b, animation) {
         animation.push([k, b[j]]);
         a[k++] = b[j++];
 
+    }
+
+}
+
+
+
+
+
+
+//------------------------------------------------- bubble sort ----------------------------------------//
+
+export const getBubbleSortAnimation = (a)=>
+{
+    const animation = [];
+    bubbleSort(a, 0, a.length-1, animation);
+    return animation;
+}
+
+
+function bubbleSort(a , first,last,animation)
+{
+    
+    for(let i = 0 ;i<=last ;i++)
+    {
+        for(let j = 0 ;j<= last-i; j++)
+        {
+            animation.push([i,j]);
+            animation.push([i,j]);
+            if(a[i] < a[j])
+            {
+                animation.push([i , a[j]]);
+                let tamp = a[i];
+                a[i] = a[j];
+                a[j] = tamp;
+            }
+        }
     }
 
 }

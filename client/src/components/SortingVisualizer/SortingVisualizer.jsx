@@ -3,8 +3,8 @@ import './SortingVisualizer.css';
 import * as SortingAlgorithm from '../SortingAlgorithms/SortingAlgorithms'
 
 
-const NumberOfArrayBar = 310 ;
-const animationSpeed = 10 ;
+const NumberOfArrayBar = 50 ;
+const animationSpeed = 100 ;
 
 
 
@@ -23,7 +23,7 @@ let arrayAreEqual = (arrayOne , arrayTwo) =>
 }
 
 
-export default function SortingVisualizer() {
+ function SortingVisualizer(props) {
 
 
     const [array, setArray] = useState([]);
@@ -39,7 +39,8 @@ export default function SortingVisualizer() {
 
     }, []);
 
-    let mergeSort = () => { 
+    
+     function mergeSort() { 
 
            const  animation = SortingAlgorithm.getMargeSortAnimation(array);
 
@@ -55,8 +56,8 @@ export default function SortingVisualizer() {
 
                         arrayBar[barOneind].style.backgroundColor = color ;
                         arrayBar[barTwoind].style.backgroundColor = color ;
-                        console.log(i);
- 
+                    
+
                     }, i* animationSpeed);
                 }else 
                 {
@@ -72,7 +73,35 @@ export default function SortingVisualizer() {
           
           
     };
-    let bubbleSort = () => { };
+    let bubbleSort = () => {
+        const  animation = SortingAlgorithm.getBubbleSortAnimation(array);
+
+           for(let i = 0 ;i< animation.length ; i++)
+           {
+                const arrayBar = document.getElementsByClassName('array-bar');
+                const isColorChange = i%3 !== 2 ;
+                if(isColorChange)
+                {
+                    const[barOneind , barTwoind ] = animation[i];
+                    const color = ( i %3 === 0 )? 'red' : 'turquoise';
+                    setTimeout(()=>{
+
+                        arrayBar[barOneind].style.backgroundColor = color ;
+                        arrayBar[barTwoind].style.backgroundColor = color ;
+                    
+
+                    }, i* animationSpeed);
+                }else 
+                {
+                    setTimeout(()=>
+                    {
+                        const [barOneind , newHight] = animation[i];
+                        arrayBar[barOneind].style.height = `${newHight}px`;
+                    } , i* animationSpeed)
+                }
+           }
+
+     };
     let quickSort = () => { };
     let heapSort = () => { };
 
@@ -89,8 +118,8 @@ export default function SortingVisualizer() {
     let tasingArray = () => {
 
         const javascriptSortedArray = array.sort((a, b) => (a-b));
-        const sortedArray  = SortingAlgorithm.getMargeSortAnimation(array);
-        console.log(arrayAreEqual(javascriptSortedArray , sortedArray));
+        const sortedArray  = SortingAlgorithm.getBubbleSortAnimation(array);
+        console.log(sortedArray);
 
     }
 
@@ -110,7 +139,9 @@ export default function SortingVisualizer() {
                 ))}
                 <br />
 
-                <button onClick={() => setArray(resetArray)}> Generate New array </button>
+
+
+                <button onClick={() => setArray(resetArray)}> generate_new_array </button>
                 <button onClick={() => mergeSort()}> mergeSort </button>
                 <button onClick={() => bubbleSort()}> bubbleSort </button>
                 <button onClick={() => quickSort()}>quickSort </button>
@@ -122,3 +153,7 @@ export default function SortingVisualizer() {
         </>
     )
 }
+
+export default SortingVisualizer ;
+
+

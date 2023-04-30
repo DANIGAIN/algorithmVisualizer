@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home/Home';
+import Home from './components/Home/Main/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,8 @@ function App() {
          <Route path='/' element={<Home name ={userName} />}>Home</Route>
          <Route path='/login' element={<Login/>}>Home</Route>
          <Route path='/signup' element={<Signup/>}>Home</Route>
-         <Route path='/sortingVisualizer' element={<SortingVisualizer/>}>sortingVisualizer</Route>
+         <Route path='/sortingVisualizer' element={<SortingVisualizer/>}>
+         </Route>
       </Routes>
       </BrowserRouter>
 
