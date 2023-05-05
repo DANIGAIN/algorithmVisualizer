@@ -53,7 +53,7 @@ function Login() {
                     <b className={styles.error}>{errorMsg}</b>
                     <button
                         onClick={handleSubmission}>Login</button>
-                    <p>Alrady have an account ?
+                    <p>Please sign up?
                         <span>
                             <Link to='../signup'>signup</Link>
                         </span>

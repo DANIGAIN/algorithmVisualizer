@@ -74,8 +74,8 @@ export default function Signup() {
                 <div className={styles.footer}>
                     <b className={styles.error}>{errorMsg}</b>
                     <button onClick={handleSubmission}>Sign Up</button>
-                    <p>Alrady have an account ?
-                        <span>
+                    <p>Alrady have an account?
+                    <span>
                             <Link to='../login'>login</Link>
                         </span>
                     </p>
