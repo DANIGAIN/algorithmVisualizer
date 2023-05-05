@@ -11,9 +11,6 @@ const animationSpeed = 100;
 let randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-// function waitforme() {
-//     return setTimeout(() => { resolve('') }, animationSpeed);
-// }
 
 
 let createNewArray = (array, setArray) => {
@@ -32,28 +29,45 @@ function SortingVisualizer(props) {
     const [clickCount, setClickCount] = useState(1);
 
     ///------------------------------------------  Implement algorithm  -------------------//
-    // function bubble() {
-    //     const element = document.querySelectorAll(".bar");
+   async function bubble() {
+        const element = document.getElementsByClassName('array-bar');
 
-    //     for(let i = 0 ;i<element.length-1;i++)
-    //     {
-    //         for(let j = 0 ; j<element.length-i-1 ; j++)
-    //         {
-    //           element[j].style.background = 'blue';
-    //           element[j+1].style.background = 'blue';
-    //           if(parseInt(element[j].style.height) >  parseInt(element[j+1].style.background))
-    //           {
-    //              waitforme();
-    //              swap(element[j] , element[j+1]);
-    //           }
-    //           element[j].style.background = 'cyan';
-    //           element[j+1].style.background = 'cyan';
+        for(let i = 0 ;i<element.length;i++)
+        {
+            for(let j = 0 ; j<element.length-i-1 ; j++)
+            {
+    
+              element[j].style.backgroundColor = 'blue';
+              element[j+1].style.backgroundColor = 'blue';
+              let val = parseInt(element[j].style.height);
+              let val1 = parseInt(element[j+1].style.height);
 
-    //         }
-    //         element[element.length-i-1].style.background = 'green';
-    //     }
+              if(val > val1)
+               {
+                await new Promise((resolve) =>
+                setTimeout(() => {
+                    resolve();
+                }, animationSpeed )
+                );
 
-    // }
+                  // swaping -->
+                    
+                  let tamp = element[j].style.height ;
+                  element[j].style.height  = element[j+1].style.height ;
+                  element[j+1].style.height =  tamp ;
+
+                 
+               }
+              element[j].style.backgroundColor = 'cyan';
+              element[j+1].style.backgroundColor = 'cyan';
+
+            }
+            element[element.length-i-1].style.backgroundColor = 'green';
+
+          
+        }
+
+    }
 
     //--------------------------end algorithm ----------------------------------//
 
@@ -84,10 +98,7 @@ function SortingVisualizer(props) {
         }
     }
 
-    function handleMergeSort()
-    {
-        mergeSort();
-    }
+
     //----------------------------- call to sizebar  -------------------------//
 
     if (props.clickCount === clickCount) {
@@ -101,13 +112,13 @@ function SortingVisualizer(props) {
                 }
             case "marge":
                 {
-                    handleMergeSort()
+                    mergeSort();
                     break;
                 }
             case "bubble":
                 {
 
-                    console.log("ok");
+                    bubble();
                     break;
                 }
             default:
