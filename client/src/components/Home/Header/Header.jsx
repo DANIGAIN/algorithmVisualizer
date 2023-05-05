@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { faPlay, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import { auth } from '../../../firebase';
 import { signOut } from "firebase/auth";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from '../../../firebase';
 import './style.css';
-import { Link, useNavigate } from "react-router-dom";
 
 export function Header(props) {
     const navigate = useNavigate();
@@ -30,8 +29,8 @@ export function Header(props) {
 
                 <div className="slider">
                     <p id="rangeName">Speed</p>
-                    <input type="range" min="0" max="200"  />
-                        <p id="rangeValue">100</p>
+                    <input type="range" min="1" max="100" value={rangeHandaler} onChange={(e)=>{changeHandaler(e)}}/>
+                        <p id="rangeValue">{rangeHandaler}</p>
                 </div>
          
                 <button className="btn1 fbtn"><FontAwesomeIcon icon={faPlay} className="pbtn"/>play</button>
