@@ -17,7 +17,10 @@
     background-color:#bbacac;
     
    }
-   .header .btn1 i{
+   .header .fbtn{
+    margin-left: 250px;
+   }
+   .header .fbtn .pbtn{
     margin-right: 5px;
    }
    .header .btn1:hover{
@@ -33,9 +36,13 @@
    .header h1{
       float:right;
       margin: 20px ;
-      font-size: 30px;
+      font-size: 25px;
+      margin-top: 25px;
    }
-
+.header h1 .ubtn{
+    margin-right: 5px;
+    font-size: 20px;
+}
 
     .slider {
     position: absolute;
