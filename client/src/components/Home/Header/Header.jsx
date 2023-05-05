@@ -30,8 +30,8 @@ export function Header(props) {
 
                 <div className="slider">
                     <p id="rangeName">Speed</p>
-                    <input type="range" min="1" max="100" value={rangeHandaler} onChange={(e)=>{changeHandaler(e)}}/>
-                        <p id="rangeValue">{rangeHandaler}</p>
+                    <input type="range" min="0" max="200"  />
+                        <p id="rangeValue">100</p>
                 </div>
          
                 <button className="btn1 fbtn"><FontAwesomeIcon icon={faPlay} className="pbtn"/>play</button>

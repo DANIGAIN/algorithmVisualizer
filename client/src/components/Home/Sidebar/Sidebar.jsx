@@ -5,7 +5,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import './style.css';
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     const sortRef = useRef(null);
     const searchRef = useRef(null);
 
@@ -13,10 +13,7 @@ export default function Sidebar() {
         field.current.nextElementSibling.classList.toggle("sub-menu");
         field.current.querySelector('.dropdown').classList.toggle('fa-rotate-90');
     }
-    let handleLinkClick =(e,field) =>
-    {
-        console.log(e.currrntTarget);
-    }
+  
 
     return (
         <>
@@ -32,18 +29,12 @@ export default function Sidebar() {
                             <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
                         </a>
                         <div className="sub-menu">
-                            <Link className="sub-item" 
-                                  
-                                   onClick={event =>
-                                     handleLinkClick(event, 'bobbyhadz.com')
-                                   }
-                                   to="/new-array"
-                                
-                            
-                            > generate new array </Link>
-                            <a href="" className="sub-item">marge sort</a>
-                            <a href="" className="sub-item">bouble sort</a>
-                            <a href="" className="sub-item">selection sort</a>
+                            <Link className="sub-item" name="newArray" onClick={e => props.LinkHandleClick(e)}> generate new array </Link>
+                            <Link className="sub-item" name="marge" onClick={e => props.LinkHandleClick(e)}> margeSort </Link>
+                            <Link className="sub-item" name="bubble" onClick={e => props.LinkHandleClick(e)}> bouble sort </Link>
+                            <Link className="sub-item" name="selection" onClick={e => props.LinkHandleClick(e)}>selection sort </Link>
+                        
+
                         </div>
                     </div>
                     <div className="item">

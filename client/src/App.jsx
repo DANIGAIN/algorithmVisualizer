@@ -28,7 +28,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
       <Routes>
-         <Route path='/' element={<Home name={userName}/>}>Home</Route>
+         <Route path='/' element={<Home />}>Home</Route>
          <Route path='/login' element={<Login/>}>Home</Route>
          <Route path='/signup' element={<Signup/>}>Home</Route>
          <Route path='/sortingVisualizer' element={<SortingVisualizer/>}>
