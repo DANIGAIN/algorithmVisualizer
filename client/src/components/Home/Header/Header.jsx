@@ -11,7 +11,7 @@ export function Header() {
 
                 <div className="slider">
                     <p id="rangeName">Speed</p>
-                    <input type="range" min="0" max="200"  />
+                    <input type="range" min="0" max="200" />
                         <p id="rangeValue">100</p>
                 </div>
          
