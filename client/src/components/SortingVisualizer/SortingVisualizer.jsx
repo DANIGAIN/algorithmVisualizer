@@ -4,7 +4,7 @@ import './SortingVisualizer.css';
 
 
 const NumberOfArrayBar = 35;
-const animationSpeed = 100;
+
 
 //--------------------------------------- use case function ------------------------//
 
@@ -23,13 +23,12 @@ let createNewArray = (array, setArray) => {
 }
 // ------------------------------------------- end use case function --------------------//
 function SortingVisualizer(props) {
-
-
+    const animationSpeed = props.animationSpeed * 10;
     const [array, setArray] = useState([]);
     const [clickCount, setClickCount] = useState(1);
 
     ///------------------------------------------  Implement algorithm  -------------------//
-    async function bubble() {
+    async function bubbleSort() {
         const element = document.getElementsByClassName('array-bar');
 
         for (let i = 0; i < element.length; i++) {
@@ -134,6 +133,13 @@ function SortingVisualizer(props) {
 
 
     //----------------------------- call to sizebar  -------------------------//
+
+     async function bubble()
+     {
+        console.log('sorting')
+         await bubbleSort();
+         console.log('done');
+     }
 
     if (props.clickCount === clickCount) {
 
