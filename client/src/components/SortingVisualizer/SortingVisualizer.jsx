@@ -29,42 +29,77 @@ function SortingVisualizer(props) {
     const [clickCount, setClickCount] = useState(1);
 
     ///------------------------------------------  Implement algorithm  -------------------//
-   async function bubble() {
+    async function bubble() {
         const element = document.getElementsByClassName('array-bar');
 
-        for(let i = 0 ;i<element.length;i++)
-        {
-            for(let j = 0 ; j<element.length-i-1 ; j++)
-            {
-    
-              element[j].style.backgroundColor = 'blue';
-              element[j+1].style.backgroundColor = 'blue';
-              let val = parseInt(element[j].style.height);
-              let val1 = parseInt(element[j+1].style.height);
+        for (let i = 0; i < element.length; i++) {
+            for (let j = 0; j < element.length - i - 1; j++) {
 
-              if(val > val1)
-               {
-                await new Promise((resolve) =>
-                setTimeout(() => {
-                    resolve();
-                }, animationSpeed )
-                );
+                element[j].style.backgroundColor = 'blue';
+                element[j + 1].style.backgroundColor = 'blue';
+                let val = parseInt(element[j].style.height);
+                let val1 = parseInt(element[j + 1].style.height);
 
-                  // swaping -->
-                    
-                  let tamp = element[j].style.height ;
-                  element[j].style.height  = element[j+1].style.height ;
-                  element[j+1].style.height =  tamp ;
+                if (val > val1) {
+                    await new Promise((resolve) =>
+                        setTimeout(() => {
+                            resolve();
+                        }, animationSpeed)
+                    );
 
-                 
-               }
-              element[j].style.backgroundColor = 'cyan';
-              element[j+1].style.backgroundColor = 'cyan';
+                    // swaping -->
+
+                    let tamp = element[j].style.height;
+                    element[j].style.height = element[j + 1].style.height;
+                    element[j + 1].style.height = tamp;
+
+
+                }
+                element[j].style.backgroundColor = 'cyan';
+                element[j + 1].style.backgroundColor = 'cyan';
 
             }
-            element[element.length-i-1].style.backgroundColor = 'green';
+            element[element.length - i - 1].style.backgroundColor = 'green';
 
-          
+
+        }
+
+    }
+
+
+    async function selection() {
+        const element = document.getElementsByClassName('array-bar');
+        for (let i = 0; i < element.length; i++) {
+            let min = i;
+            element[i].style.backgroundColor = 'blue';
+            for (let j = i + 1; j < element.length; j++) {
+                element[j].style.backgroundColor = 'red';
+
+                await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+                let val = parseInt(element[j].style.height);
+                let val1 = parseInt(element[min].style.height);
+                if (val < val1) {
+                     
+                     if (min !== i) {
+  
+                        // Provide skyblue color to the (min-idx)th bar
+                        element[min].style.backgroundColor = 'cyan';
+                      }
+                      min = j;
+                }else
+
+                element[j].style.backgroundColor = 'cyan';
+            
+            }
+            if (min !== i) {
+                let tamp = element[i].style.height;
+                element[i].style.height = element[min].style.height;
+                element[min].style.height = tamp;
+            }
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed ));
+
+            element[min].style.backgroundColor ='cyan';
+            element[i].style.backgroundColor = 'green';
         }
 
     }
@@ -119,6 +154,11 @@ function SortingVisualizer(props) {
                 {
 
                     bubble();
+                    break;
+                }
+            case "selection":
+                {
+                    selection();
                     break;
                 }
             default:
