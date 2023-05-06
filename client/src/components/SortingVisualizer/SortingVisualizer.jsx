@@ -82,7 +82,6 @@ function SortingVisualizer(props) {
                      
                      if (min !== i) {
   
-                        // Provide skyblue color to the (min-idx)th bar
                         element[min].style.backgroundColor = 'cyan';
                       }
                       min = j;
