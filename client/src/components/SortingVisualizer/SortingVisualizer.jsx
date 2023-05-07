@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import * as SortingAlgorithm from '../SortingAlgorithms/SortingAlgorithms';
-import './SortingVisualizer.css';
+import React, { useState } from "react"
+import './SortingVisualizer.css'
 
 
 const NumberOfArrayBar = 35;
@@ -34,8 +33,8 @@ function SortingVisualizer(props) {
         for (let i = 0; i < element.length; i++) {
             for (let j = 0; j < element.length - i - 1; j++) {
 
-                element[j].style.backgroundColor = 'blue';
-                element[j + 1].style.backgroundColor = 'blue';
+                element[j].style.backgroundColor = 'red';
+                element[j + 1].style.backgroundColor = 'red';
                 let val = parseInt(element[j].style.height);
                 let val1 = parseInt(element[j + 1].style.height);
 
@@ -102,35 +101,118 @@ function SortingVisualizer(props) {
 
     }
 
-    //--------------------------end algorithm ----------------------------------//
-
-    function mergeSort() {
 
 
-        const animation = SortingAlgorithm.getMargeSortAnimation(array);
-
-        for (let i = 0; i < animation.length; i++) {
-            const arrayBar = document.getElementsByClassName('array-bar');
-            const isColorChange = i % 3 !== 2;
-            if (isColorChange) {
-                const [barOneind, barTwoind] = animation[i];
-                const color = (i % 3 === 0) ? 'red' : 'turquoise';
-                setTimeout(() => {
-
-                    arrayBar[barOneind].style.backgroundColor = color;
-                    arrayBar[barTwoind].style.backgroundColor = color;
 
 
-                }, i * animationSpeed);
-            } else {
-                setTimeout(() => {
-                    const [barOneind, newHight] = animation[i];
-                    arrayBar[barOneind].style.height = `${newHight}px`;
-                }, i * animationSpeed)
+    async function merge(element , first , mid , last)
+    {
+
+        const n1 = mid -first +1 ;
+        const n2 = last - mid ;
+        let left = new Array(n1);
+        let right = new Array(n2);
+
+        // left half --> 
+        for(let i = 0 ;i< n1 ;i++)
+        {
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+            element[first + i].style.backgroundColor = 'orange';
+            left[i] = element[first + i].style.height ;
+        }
+
+        //right  left  --> 
+        for(let i = 0 ;i<n2 ;i++)
+        {
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+            element[mid +i +1].style.backgroundColor = 'yellow' ;
+            right[i] = element[mid +i +1].style.height ;
+        }
+
+        await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+        let i = 0 ,j = 0 ,k = first ;
+        while(i<n1 && j < n2)
+        {
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+            if(parseInt(left[i]) <= parseInt(right[j]))
+            {
+                if((n1 + n2) === element.length )
+                {
+                    element[k].style.backgroundColor = 'green';
+                }
+                else 
+                {
+                    element[k].style.backgroundColor = 'lightgreen' ;
+                }
+                element[k].style.height = left[i] ;
+                i++ ;
+                k++;
+            }
+            else 
+            {
+                if((n1 + n2) === element.length)
+                {
+                    element[k].style.backgroundColor = 'green';
+                }else 
+                {
+                    element[k].style.backgroundColor = 'lightgreen' ;
+                }
+                element[k].style.height = right[j];
+                j++ ;
+                k++ ;
             }
         }
-    }
 
+     // last  part ---> 
+        while( i < n1)
+        {
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+
+            if((n1 + n2) === element.length )
+            {
+                element[k].style.backgroundColor = 'green';
+            }
+            else 
+            {
+                element[k].style.backgroundColor = 'lightgreen' ;
+            }
+            element[k].style.height = left[i] ;
+            i++ ;
+            k++;
+
+        }
+
+        while(j < n2 )
+        {
+            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+
+            if(n1 + n2 === element.length)
+            {
+                element[k].style.backgroundColor = 'green';
+            }else 
+            {
+                element[k].style.backgroundColor = 'lightgreen' ;
+            }
+            element[k].style.height = right[j];
+            j++ ;
+            k++ ;
+
+        }
+
+
+    }
+    async function margeSort(element , first , last)
+    {
+        if(first >= last) return ;
+        const mid = first  + Math.floor((last - first) / 2);
+
+       await margeSort(element, first, mid);
+       await margeSort(element, mid + 1, last);
+       await merge(element, first, mid, last);
+
+    }
+   
+    //--------------------------end algorithm ----------------------------------//
 
     //----------------------------- call to sizebar  -------------------------//
 
@@ -152,7 +234,8 @@ function SortingVisualizer(props) {
                 }
             case "marge":
                 {
-                    mergeSort();
+                    const element = document.getElementsByClassName('array-bar');
+                    margeSort(element , 0 , parseInt(element.length) -1);
                     break;
                 }
             case "bubble":
@@ -185,15 +268,6 @@ function SortingVisualizer(props) {
                         </div>
 
                     ))}
-
-
-
-                    {/* <button onClick={() => setArray(resetArray)}> generate_new_array </button>
-            <button onClick={() => mergeSort()}> mergeSort </button>
-            <button onClick={() => bubbleSort()}> bubbleSort </button>
-            <button onClick={() => quickSort()}>quickSort </button>
-            <button onClick={() => heapSort()}> heapSort </button>
-            <button onClick={() => tasingArray()}> tasingArray </button> */}
 
 
                 </div>

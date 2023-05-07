@@ -30,7 +30,6 @@ export default function Home(props) {
                     clickEvent={clickEvent}
                     clickCount={clickCount}
                     animationSpeed={speed}
-                    // passState={setPassState}
                  />
             </div>
             <div className="Sidebar">
