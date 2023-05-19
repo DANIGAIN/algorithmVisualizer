@@ -24,12 +24,16 @@ export default function Sidebar(props) {
                     <h1>Algorithm Vizualizer</h1>
                 </div>
                 <div className="menu">
+                    
                     <div className="item">
+                        <div className="array">
+                        <Link className="sub-item" name="newArray" onClick={e => props.LinkHandleClick(e)}> generate new array </Link>
+                        </div>
                         <a className="sub-btn" ref={sortRef} onClick={e => handleClick(e, sortRef)} >Sorting
                             <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
                         </a>
                         <div className="sub-menu">
-                            <Link className="sub-item" name="newArray" onClick={e => props.LinkHandleClick(e)}> generate new array </Link>
+                            
                             <Link className="sub-item" name="marge" onClick={e => props.LinkHandleClick(e)}> margeSort </Link>
                             <Link className="sub-item" name="bubble" onClick={e => props.LinkHandleClick(e)}> bouble sort </Link>
                             <Link className="sub-item" name="selection" onClick={e => props.LinkHandleClick(e)}>selection sort </Link>
