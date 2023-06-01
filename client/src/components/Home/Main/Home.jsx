@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SortingVisualizer from '../../SortingVisualizer/SortingVisualizer';
+import SearchingVisualizer from '../../SearchingVisualizer/SearchingVisualizer';
 import { Header } from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './style.css';
@@ -7,18 +8,29 @@ import './style.css';
 export default function Home(props) {
     const [clickEvent, setClickEvent] = useState('');
     const [clickCount, setClickCount] = useState(0);
+    
+
+    const [clickSearchEvent, setClickSearchEvent] = useState('');
+    const [clickSearchCount, setClickSearchCount] = useState(0);
+
     const [speed , setSpeed] = useState(10);
     function clickHandeler(e) {
         setClickEvent(e.target.name);
         setClickCount(prov => prov + 1);
     }
+
+    function clickSearchHandeler(e)
+    {
+        setClickSearchEvent(e.target.name);
+        setClickSearchCount(prov => prov + 1);
+
+    }
+
     function setAnimationSpeed(value){
         setSpeed(value);
     }
-    // function setPassState(value)
-    // {
-    //     console.log(value);
-    // }
+
+  
 
     return (
         <>
@@ -31,10 +43,19 @@ export default function Home(props) {
                     clickCount={clickCount}
                     animationSpeed={speed}
                  />
+
+
+                <SearchingVisualizer
+                  clickCount={clickSearchCount}
+                  clickEvent={clickSearchEvent}
+                />
             </div>
             <div className="Sidebar">
                 <Sidebar
-                    LinkHandleClick={clickHandeler} />
+                    LinkHandleClick={clickHandeler} 
+                    LinkSearchHandleClick = {clickSearchHandeler}
+                    />
+                    
             </div>
             <div className='Footer'>
 

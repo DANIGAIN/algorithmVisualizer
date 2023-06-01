@@ -42,8 +42,9 @@ export default function Sidebar(props) {
                             <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
                         </a>
                         <div className="sub-menu">
-                            <a href="" className="sub-item">binary search</a>
-                            <a href="" className="sub-item">linear search</a>
+                            <Link className="sub-item" name="newSearchArray" onClick={e => props.LinkSearchHandleClick(e)}> generate new array </Link>
+                            <Link  className="sub-item" name="binary" onClick={e => props.LinkSearchHandleClick(e)} >binary search</Link>
+                            <Link  className="sub-item" name="linear" onClick={e => props.LinkSearchHandleClick(e)} >linear search</Link>
                         </div>
                     </div>
                 </div>

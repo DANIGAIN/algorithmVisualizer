@@ -14,17 +14,19 @@ let randomIntFromInterval = (min, max) => {
 
 let createNewArray = (array, setArray) => {
     let a = [];
-
     for (let i = 0; i < NumberOfArrayBar; i++) {
         a.push(randomIntFromInterval(5, 700));
     }
     setArray(a);
+    
 }
 // ------------------------------------------- end use case function --------------------//
 function SortingVisualizer(props) {
-    const animationSpeed = props.animationSpeed * 10;
-    const [array, setArray] = useState([]);
-    const [clickCount, setClickCount] = useState(1);
+   
+     const animationSpeed = props.animationSpeed * 10;
+     const [array, setArray] = useState([]);
+     const [clickCount, setClickCount] = useState(1);
+
 
     ///------------------------------------------  Implement algorithm  -------------------//
     async function bubbleSort() {
