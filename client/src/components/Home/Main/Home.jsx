@@ -5,15 +5,28 @@ import { Header } from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './style.css';
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+const auth = getAuth();
+
+
 export default function Home(props) {
     const [clickEvent, setClickEvent] = useState('');
     const [clickCount, setClickCount] = useState(0);
+    const navigate = useNavigate();
     
 
     const [clickSearchEvent, setClickSearchEvent] = useState('');
     const [clickSearchCount, setClickSearchCount] = useState(0);
 
     const [speed , setSpeed] = useState(10);
+
+
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+         navigate('/login');
+        }
+      });
     function clickHandeler(e) {
         setClickEvent(e.target.name);
         setClickCount(prov => prov + 1);

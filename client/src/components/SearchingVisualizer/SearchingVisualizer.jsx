@@ -74,7 +74,7 @@ export default function  SearchingVisualizer(props)
 //-------------------------------------------------------------------------------//
     return (
         <>
-            <div id="container">
+            <div className="container">
                 <div className="array-container">
                     {array.map((value, index) =>
                     (
