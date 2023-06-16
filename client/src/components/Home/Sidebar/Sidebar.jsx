@@ -47,6 +47,9 @@ export default function Sidebar(props) {
                             <Link  className="sub-item" name="linear" onClick={e => props.LinkSearchHandleClick(e)} >linear search</Link>
                         </div>
                     </div>
+
+
+                   
                 </div>
             </div>
         </>

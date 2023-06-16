@@ -29,17 +29,17 @@ export default function  SearchingVisualizer(props)
 
 
   //---------------------------------------------------  Implement searching  algorithm  ----------------- //
-   function binary()
-   {
+//    function binary()
+//    {
          
-        console.log(" hi i am binary");
-   }
+//         console.log(" hi i am binary");
+//    }
 
 
-   function  linear()
-   {
-        console.log("hi i am  linear ");
-   }
+//    function  linear()
+//    {
+//         console.log("hi i am  linear ");
+//    }
 
 
 
@@ -85,6 +85,7 @@ export default function  SearchingVisualizer(props)
                         </div>
 
                     ))}
+                
 
 
                 </div>

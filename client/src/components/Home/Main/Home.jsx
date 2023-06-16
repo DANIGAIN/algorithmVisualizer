@@ -19,7 +19,7 @@ export default function Home(props) {
     const [clickSearchEvent, setClickSearchEvent] = useState('');
     const [clickSearchCount, setClickSearchCount] = useState(0);
 
-    const [speed , setSpeed] = useState(10);
+    const [speed , setSpeed] = useState(50);
 
 
     onAuthStateChanged(auth, (user) => {

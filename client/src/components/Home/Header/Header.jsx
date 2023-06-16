@@ -18,10 +18,14 @@ export function Header(props) {
             
         });
     }
+
+
+
     
     function changeHandaler(e){
         setRangeHandaler((prev)=>e.target.value);
-        let value = rangeHandaler;
+       
+        let value =  e.target.max - e.target.value + parseInt(e.target.min) ;
         props.animationSpeed(value);
     }
     return (
