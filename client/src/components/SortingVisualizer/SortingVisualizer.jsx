@@ -1,34 +1,12 @@
-import React, { useState } from "react"
-import './SortingVisualizer.css'
 
-
-const NumberOfArrayBar = 35;
-
-
-//--------------------------------------- use case function ------------------------//
-
-let randomIntFromInterval = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-
-let createNewArray = (array, setArray) => {
-    let a = [];
-    for (let i = 0; i < NumberOfArrayBar; i++) {
-        a.push(randomIntFromInterval(5, 700));
-    }
-    setArray(a);
-    
-}
 // ------------------------------------------- end use case function --------------------//
-function SortingVisualizer(props) {
-   
-     const animationSpeed = props.animationSpeed * 10;
-     const [array, setArray] = useState([]);
-     const [clickCount, setClickCount] = useState(1);
 
+ import '../style.css'
+function SortingVisualizer({ newArray ,newClick ,speed}) {
 
-    ///------------------------------------------  Implement algorithm  -------------------//
+    speed = speed * 50;
+
+    //------------------------------------------  Implement algorithm  -------------------//
     async function bubbleSort() {
         const element = document.getElementsByClassName('array-bar');
 
@@ -44,7 +22,7 @@ function SortingVisualizer(props) {
                     await new Promise((resolve) =>
                         setTimeout(() => {
                             resolve();
-                        }, animationSpeed)
+                        }, speed)
                     );
 
                     // swaping -->
@@ -75,29 +53,29 @@ function SortingVisualizer(props) {
             for (let j = i + 1; j < element.length; j++) {
                 element[j].style.backgroundColor = 'red';
 
-                await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+                await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
                 let val = parseInt(element[j].style.height);
                 let val1 = parseInt(element[min].style.height);
                 if (val < val1) {
-                     
-                     if (min !== i) {
-  
-                        element[min].style.backgroundColor = 'cyan';
-                      }
-                      min = j;
-                }else
 
-                element[j].style.backgroundColor = 'cyan';
-            
+                    if (min !== i) {
+
+                        element[min].style.backgroundColor = 'cyan';
+                    }
+                    min = j;
+                } else
+
+                    element[j].style.backgroundColor = 'cyan';
+
             }
             if (min !== i) {
                 let tamp = element[i].style.height;
                 element[i].style.height = element[min].style.height;
                 element[min].style.height = tamp;
             }
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed ));
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
 
-            element[min].style.backgroundColor ='cyan';
+            element[min].style.backgroundColor = 'cyan';
             element[i].style.backgroundColor = 'green';
         }
 
@@ -107,175 +85,118 @@ function SortingVisualizer(props) {
 
 
 
-    async function merge(element , first , mid , last)
-    {
+    async function merge(element, first, mid, last) {
 
-        const n1 = mid -first +1 ;
-        const n2 = last - mid ;
+        const n1 = mid - first + 1;
+        const n2 = last - mid;
         let left = new Array(n1);
         let right = new Array(n2);
 
         // left half --> 
-        for(let i = 0 ;i< n1 ;i++)
-        {
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+        for (let i = 0; i < n1; i++) {
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
             element[first + i].style.backgroundColor = 'orange';
-            left[i] = element[first + i].style.height ;
+            left[i] = element[first + i].style.height;
         }
 
         //right  left  --> 
-        for(let i = 0 ;i<n2 ;i++)
-        {
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
-            element[mid +i +1].style.backgroundColor = 'yellow' ;
-            right[i] = element[mid +i +1].style.height ;
+        for (let i = 0; i < n2; i++) {
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
+            element[mid + i + 1].style.backgroundColor = 'yellow';
+            right[i] = element[mid + i + 1].style.height;
         }
 
-        await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
-        let i = 0 ,j = 0 ,k = first ;
-        while(i<n1 && j < n2)
-        {
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
-            if(parseInt(left[i]) <= parseInt(right[j]))
-            {
-                if((n1 + n2) === element.length )
-                {
+        await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
+        let i = 0, j = 0, k = first;
+        while (i < n1 && j < n2) {
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
+            if (parseInt(left[i]) <= parseInt(right[j])) {
+                if ((n1 + n2) === element.length) {
                     element[k].style.backgroundColor = 'green';
                 }
-                else 
-                {
-                    element[k].style.backgroundColor = 'lightgreen' ;
+                else {
+                    element[k].style.backgroundColor = 'lightgreen';
                 }
-                element[k].style.height = left[i] ;
-                i++ ;
+                element[k].style.height = left[i];
+                i++;
                 k++;
             }
-            else 
-            {
-                if((n1 + n2) === element.length)
-                {
+            else {
+                if ((n1 + n2) === element.length) {
                     element[k].style.backgroundColor = 'green';
-                }else 
-                {
-                    element[k].style.backgroundColor = 'lightgreen' ;
+                } else {
+                    element[k].style.backgroundColor = 'lightgreen';
                 }
                 element[k].style.height = right[j];
-                j++ ;
-                k++ ;
+                j++;
+                k++;
             }
         }
 
-     // last  part ---> 
-        while( i < n1)
-        {
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+        //  // last  part ---> 
+        while (i < n1) {
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
 
-            if((n1 + n2) === element.length )
-            {
+            if ((n1 + n2) === element.length) {
                 element[k].style.backgroundColor = 'green';
             }
-            else 
-            {
-                element[k].style.backgroundColor = 'lightgreen' ;
+            else {
+                element[k].style.backgroundColor = 'lightgreen';
             }
-            element[k].style.height = left[i] ;
-            i++ ;
+            element[k].style.height = left[i];
+            i++;
             k++;
 
         }
 
-        while(j < n2 )
-        {
-            await new Promise((resolve) =>setTimeout(() => {resolve();}, animationSpeed));
+        while (j < n2) {
+            await new Promise((resolve) => setTimeout(() => { resolve(); }, speed));
 
-            if(n1 + n2 === element.length)
-            {
+            if (n1 + n2 === element.length) {
                 element[k].style.backgroundColor = 'green';
-            }else 
-            {
-                element[k].style.backgroundColor = 'lightgreen' ;
+            } else {
+                element[k].style.backgroundColor = 'lightgreen';
             }
             element[k].style.height = right[j];
-            j++ ;
-            k++ ;
+            j++;
+            k++;
 
         }
 
 
     }
-    async function margeSort(element , first , last)
-    {
-        if(first >= last) return ;
-        const mid = first  + Math.floor((last - first) / 2);
+    async function margeSort(element, first, last) {
+        if (first >= last) return;
+        const mid = first + Math.floor((last - first) / 2);
 
-       await margeSort(element, first, mid);
-       await margeSort(element, mid + 1, last);
-       await merge(element, first, mid, last);
+        await margeSort(element, first, mid);
+        await margeSort(element, mid + 1, last);
+        await merge(element, first, mid, last);
 
     }
-   
-    //--------------------------end algorithm ----------------------------------//
 
-    //----------------------------- call to sizebar  -------------------------//
+   //--------------------------end algorithm ----------------------------------//
+   console.log(newClick);
 
-     async function bubble()
-     {
-        console.log('sorting')
-         await bubbleSort();
-         console.log('done');
-     }
-
-    if (props.clickCount === clickCount) {
-
-        switch (props.clickEvent) {
-            case "newArray":
-                {
-                    createNewArray(array, setArray);
-                    setClickCount(prev => prev + 1);
-                    break;
-                }
-            case "marge":
-                {
-                    const element = document.getElementsByClassName('array-bar');
-                    margeSort(element , 0 , parseInt(element.length) -1);
-                    break;
-                }
-            case "bubble":
-                {
-
-                    bubble();
-                    break;
-                }
-            case "selection":
-                {
-                    selection();
-                    break;
-                }
-            default:
-                console.log(childClickEvent);
-        }
-    }
-
+     if(newClick == 'bubble') bubbleSort();
+     else if(newClick == 'marge') margeSort(newArray ,0,34);
+     else if(newClick == 'selection') selection();
     //-------------------------------------------------------------------------------//
-    return (
-        <>
-            <div className="responsive">
-                <div className="array-container">
-                    {array.map((value, index) =>
-                    (
-                        <div
-                            className="array-bar"
-                            key={index}
-                            style={{ height: `${value}px` }}>
-                        </div>
+    // return (
+    //     <>
+    //         <div className="array-container">
+    //             {newArray.map((value, index) =>
+    //             (
+    //                 <div
+    //                     className="array-bar"
+    //                     key={index}
+    //                     style={{ height: `${value}px` }}>
+    //                 </div>
 
-                    ))}
-
-
-                </div>
-            </div>
-        </>
-    )
+    //             ))}
+    //         </div>
+    //     </>
+    // )
 
 }
 
