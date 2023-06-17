@@ -4,7 +4,7 @@
  import '../style.css'
 function SortingVisualizer({ newArray ,newClick ,speed}) {
 
-    speed = speed * 50;
+    speed =  1000 - speed * 10 ;
 
     //------------------------------------------  Implement algorithm  -------------------//
     async function bubbleSort() {
@@ -85,8 +85,9 @@ function SortingVisualizer({ newArray ,newClick ,speed}) {
 
 
 
-    async function merge(element, first, mid, last) {
+    async function merge( first, mid, last) {
 
+        const element = document.getElementsByClassName('array-bar');
         const n1 = mid - first + 1;
         const n2 = last - mid;
         let left = new Array(n1);
@@ -171,7 +172,7 @@ function SortingVisualizer({ newArray ,newClick ,speed}) {
 
         await margeSort(element, first, mid);
         await margeSort(element, mid + 1, last);
-        await merge(element, first, mid, last);
+        await merge(first, mid, last);
 
     }
 
