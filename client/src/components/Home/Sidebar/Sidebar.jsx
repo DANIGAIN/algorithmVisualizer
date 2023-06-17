@@ -5,7 +5,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import './style.css';
 
-export default function Sidebar(props) {
+export default function Sidebar({dispatch, ArrayBar}) {
     const sortRef = useRef(null);
     const searchRef = useRef(null);
 
@@ -13,41 +13,44 @@ export default function Sidebar(props) {
         field.current.nextElementSibling.classList.toggle("sub-menu");
         field.current.querySelector('.dropdown').classList.toggle('fa-rotate-90');
     }
-  
 
-    return (
-        <>
+     return (
+         <>
+             <div className="side-bar">
+                 <div id="title">
+                     <h2>Welcome to</h2>
+                     <h1>Algorithm Vizualizer</h1>
+                 </div>
+                 <div className="menu">
+                     <div className="item">
+                         <Link className="sub-item"  name="newArray" onClick={() =>dispatch({ type: "newArray", payload : ArrayBar})}> generate new array </Link>
+                     </div>
+                     <div className="item">
+                         <a className="sub-btn" ref={sortRef} onClick={e => handleClick(e, sortRef)} >Sorting
+                             <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
+                         </a>
+                         <div className="sub-menu">
+                             <Link className="sub-item" name="marge" onClick={() => dispatch({ type: "marge", payload: true })}> margeSort </Link>
+                             <Link className="sub-item" name="bubble" onClick={()=> dispatch({ type: "bubble", payload: true })}> bouble sort </Link>
+                             <Link className="sub-item" name="selection" onClick={()=> dispatch({ type: "selection", payload: true })}>selection sort </Link>
 
-            <div className="side-bar">
-                <div id="title">
-                    <h2>Welcome to</h2>
-                    <h1>Algorithm Vizualizer</h1>
-                </div>
-                <div className="menu">
-                    <div className="item">
-                        <a className="sub-btn" ref={sortRef} onClick={e => handleClick(e, sortRef)} >Sorting
-                            <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
-                        </a>
-                        <div className="sub-menu">
-                            <Link className="sub-item" name="newArray" onClick={e => props.LinkHandleClick(e)}> generate new array </Link>
-                            <Link className="sub-item" name="marge" onClick={e => props.LinkHandleClick(e)}> margeSort </Link>
-                            <Link className="sub-item" name="bubble" onClick={e => props.LinkHandleClick(e)}> bouble sort </Link>
-                            <Link className="sub-item" name="selection" onClick={e => props.LinkHandleClick(e)}>selection sort </Link>
-                        
 
-                        </div>
-                    </div>
-                    <div className="item">
-                        <a className="sub-btn" ref={searchRef} onClick={e => handleClick(e, searchRef)} >Searching
-                            <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
-                        </a>
-                        <div className="sub-menu">
-                            <a href="" className="sub-item">binary search</a>
-                            <a href="" className="sub-item">linear search</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+                         </div>
+                     </div>
+                     <div className="item">
+                         <a className="sub-btn" ref={searchRef} onClick={e => handleClick(e, searchRef)} >Searching
+                             <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
+                         </a>
+                         <div className="sub-menu">
+                             <Link className="sub-item" name="binary" onClick={() =>dispatch({ type: "binary", value: true })} >binary search</Link>
+                             <Link className="sub-item" name="linear" onClick={() =>dispatch({ type: "linear", value: true })} >linear search</Link>
+                         </div>
+                     </div>
+
+
+
+                 </div>
+             </div>
+         </>
+     )
 }

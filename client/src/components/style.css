@@ -1,0 +1,33 @@
+.array-container{
+    position: absolute;
+    bottom:70px;
+    left: 420px ;
+   }
+   .array-bar{
+  
+       border-radius: 10px;
+       width: 35px;
+       background-color: rgb(0, 0, 0);
+       display:inline-block;
+       margin:0 2px;
+   }
+        
+   
+   
+   
+   
+    .responsive {
+      background-color: #b7acac;
+       position: relative;
+       border: 5px solid rgb(0, 0, 0);
+       border-radius: 10px;
+       background-size: contain;
+       margin-top: 25px;
+       margin-left: 370px;
+       margin-right: 20px ;
+       height: 800px;
+       color: rgb(6, 77, 4);
+       
+       
+   }
+   
