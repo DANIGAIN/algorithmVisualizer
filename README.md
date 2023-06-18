@@ -21,6 +21,7 @@ Algorithm Visualizer is a web application that allows users to interactively exp
 1. Clone the repository:
    ```bash
     git clone https://github.com/DANIGAIN/algorithmVisualizer.git
- or 
+    
+  ```bash
     git clone git@github.com:DANIGAIN/algorithmVisualizer.git
 
