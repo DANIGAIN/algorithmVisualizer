@@ -10,9 +10,8 @@ Algorithm Visualizer is a web application that allows users to interactively exp
  - Selection Sort
  - Merge Sort
 
-
- -Linear search 
- -Binary Search
+ - Linear search 
+ - Binary Search
 
 ### This is built using HTML, CSS, JavaScript <br/>
 
@@ -21,7 +20,5 @@ Algorithm Visualizer is a web application that allows users to interactively exp
 1. Clone the repository:
    ```bash
     git clone https://github.com/DANIGAIN/algorithmVisualizer.git
-    
-  ```bash
-    git clone git@github.com:DANIGAIN/algorithmVisualizer.git
+
 
