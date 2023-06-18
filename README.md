@@ -28,6 +28,7 @@ Algorithm Visualizer is a web application that allows users to interactively exp
    - Open a terminal or command prompt and navigate to the root directory of your React app.
    - git Clone  flow instolatoin stap .
    - navigate to the project directory using the cd command:
+   
     ```bash
       cd algorithmVisualizer
 
