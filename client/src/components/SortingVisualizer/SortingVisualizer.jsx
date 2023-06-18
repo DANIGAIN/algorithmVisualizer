@@ -177,7 +177,7 @@ function SortingVisualizer({ newArray ,newClick ,speed}) {
     }
 
    //--------------------------end algorithm ----------------------------------//
-   console.log(newClick);
+   
 
      if(newClick == 'bubble') bubbleSort();
      else if(newClick == 'marge') margeSort(newArray ,0,34);

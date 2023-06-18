@@ -67,7 +67,7 @@ export default function Home(props) {
             </div> 
               <div className="main">
                   <Structure />
-                  <SearchingVisualizer  newArray={state.randomArray} />
+                  <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />
                   <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>
               </div>
               
