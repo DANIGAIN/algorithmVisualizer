@@ -4,6 +4,7 @@ import SearchingVisualizer from '../../SearchingVisualizer/SearchingVisualizer';
 import { Header } from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import Structure from './Structure';
+import PathFindingVisulizer from '../../PathFindingVisulizer/PathFindingVisulizer';
 import './style.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -15,7 +16,9 @@ const initialState =
     animationSpeed: 10,
     click: "",
     randomArray: [] ,
-    NumberOfArrayBar: 35
+    NumberOfArrayBar: 35,
+    IsGraph: false,
+    IsArray: false
 
 }
 
@@ -28,7 +31,11 @@ let reducer = function(state ,action )
             for (let i = 0; i < state.NumberOfArrayBar; i++) {
               randomArray.push(Math.floor(Math.random() * 500));
             }
-            return { ...state, randomArray };
+            return { ...state, randomArray ,IsArray: true , IsGraph: false};
+
+        case "newGraph":
+
+            return {...state , IsGraph: action.payload,IsArray:false}
 
         case "marge":
             return {...state, click : "marge"} ;
@@ -67,8 +74,9 @@ export default function Home(props) {
             </div> 
               <div className="main">
                   <Structure />
-                  <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />
-                  <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>
+                  {state.IsArray && <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />}
+                  {state.IsArray && <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>}
+                  {state.IsGraph && <PathFindingVisulizer/>}
               </div>
               
             <div className="Sidebar">

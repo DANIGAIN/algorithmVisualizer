@@ -10,7 +10,7 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
     return () => {
       setSearchElement(() => prompt("Please Enter any number 0 to 500"));
     };
-  }, [newClick == "binary", newClick == "linear"]);
+  }, [newClick == "linear"]);
 
   async function LinearSearch() {
     const element = document.getElementsByClassName("array-bar");
@@ -28,14 +28,14 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
       }
       await new Promise((resolve) => setTimeout(resolve, speed));
     }
-    setIndex(-1);
+
   }
 
   useEffect(() => {
     try {
       if (newClick === "linear") {
         LinearSearch().then(() => {
-          console.log(newArray);
+          alert("not Found this List");
         });
       }
     } catch (err) {

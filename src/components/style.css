@@ -35,4 +35,38 @@
        
        
    }
-   
+
+
+   /*------------------------------------     graphs       --------------------- */
+
+   .grid{
+
+    position: absolute;
+    bottom:90px;
+    left: 420px ;
+
+   }
+
+   .node
+   {
+
+      width: 25px;
+      height: 25px;
+      outline: 1px solid rgb(134, 128, 128);
+      display: inline-block;
+      border-radius: 20%;
+      margin:0 .20px;
+    
+   }
+   .node_started
+   {
+      background-color:rgb(0, 0, 0);
+      background-size: cover;
+      padding:0;
+      margin:0;
+   }  
+   .node_finish{
+
+    background-color: rebeccapurple;
+      
+   } 

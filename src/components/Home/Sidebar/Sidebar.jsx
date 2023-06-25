@@ -23,8 +23,9 @@ export default function Sidebar({dispatch, ArrayBar}) {
                  </div>
                  <div className="menu">
                      <div className="item">
-                         <Link className="sub-item"  name="newArray" onClick={() =>dispatch({ type: "newArray", payload : ArrayBar})}> generate new array </Link>
-                     </div>
+                         <Link className="sub-item"  name="newArray" onClick={() =>dispatch({ type: "newArray", payload : ArrayBar})}> Generate new array </Link>
+                         <Link className="sub-item"  name="newGraph" onClick={() =>dispatch({ type: "newGraph", payload : true})}> Generate graph </Link>
+                     </div> 
                      <div className="item">
                          <a className="sub-btn" ref={sortRef} onClick={e => handleClick(e, sortRef)} >Sorting
                              <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />

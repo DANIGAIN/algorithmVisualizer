@@ -14,6 +14,7 @@
     "firebase": "^9.20.0",
     "ionicons": "^7.1.0",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0"
   },
