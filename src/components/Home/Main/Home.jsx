@@ -76,7 +76,7 @@ export default function Home(props) {
                   <Structure />
                   {state.IsArray && <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />}
                   {state.IsArray && <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>}
-                  {state.IsGraph && <PathFindingVisulizer/>}
+                  {state.IsGraph && <PathFindingVisulizer speed = {state.animationSpeed}/>}
               </div>
               
             <div className="Sidebar">
