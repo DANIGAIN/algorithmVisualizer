@@ -8,6 +8,7 @@ import './style.css';
 export default function Sidebar({dispatch, ArrayBar}) {
     const sortRef = useRef(null);
     const searchRef = useRef(null);
+    const x = 10 ;
 
     let handleClick = (e, field) => {
         field.current.nextElementSibling.classList.toggle("sub-menu");
