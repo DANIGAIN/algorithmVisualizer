@@ -224,7 +224,7 @@ const visulizerBFS = async () => {
         })}
       </div>
       <div>
-         <button onClick={visulizerBFS}>visulizerBFS</button>
+         <button onClick={visulizerBFS} style={{float:"right"}}>visulizerBFS</button>
       </div>
     </div>
   );

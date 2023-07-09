@@ -80,7 +80,7 @@ export default function Home(props) {
               </div>
               
             <div className="Sidebar">
-                <Sidebar dispatch={dispatch} ArrayBar={state.NumberOfArrayBar}/>     
+                <Sidebar isArray={state.IsArray} isGraph={state.IsGraph} dispatch={dispatch} ArrayBar={state.NumberOfArrayBar}/>     
              </div>
             
        
