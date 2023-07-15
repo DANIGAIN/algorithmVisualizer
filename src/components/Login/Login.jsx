@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './login.module.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react'
@@ -7,13 +8,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../../firebase'
 
 function Login() {
-
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
         pass: "",
     });
     const [errorMsg, setErrorMsg] = useState("");
+    
 
     const handleSubmission = () => {
         if ( !values.email || !values.pass) {
@@ -40,15 +41,23 @@ function Login() {
                 <InputControl
                     label="Email"
                     placeholder="Enter email address"
+                    type="email"
+                    disabled="true"
                     onChange={(evant) => {
                         setValues((prev) => ({ ...prev, email: evant.target.value }))
                     }} />
                 <InputControl
                     label="Password"
+                    type="password"
+                    disabled="false"
                     placeholder="Enter Password"
+                   
+
                     onChange={(evant) => {
                         setValues((prev) => ({ ...prev, pass: evant.target.value }))
                     }} />
+
+
                 <div className={styles.footer}>
                     <b className={styles.error}>{errorMsg}</b>
                     <button

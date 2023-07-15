@@ -50,7 +50,9 @@ export default function Signup() {
                 <h1 className={styles.heading} >Sign up</h1>
                 <InputControl
                     label="Name"
+                    type="text"
                     placeholder="Enter full Name"
+                    disabled="true"
                     onChange={(e) =>
                         setValues((prev) => ({ ...prev, name: e.target.value }))
 
@@ -59,14 +61,18 @@ export default function Signup() {
                 />
                 <InputControl
                     label="Email"
+                    type="email"
                     placeholder="Enter email address"
+                    disabled="true"
                     onChange={(e) =>
                         setValues((prev) => ({ ...prev, email: e.target.value }))
 
                     } />
                 <InputControl
                     label="Password"
+                    type="password"
                     placeholder="Enter Password"
+                    disabled="false"
                     onChange={(e) =>
                         setValues((prev) => ({ ...prev, pass: e.target.value }))
 

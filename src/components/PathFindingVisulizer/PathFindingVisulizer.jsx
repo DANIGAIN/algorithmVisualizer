@@ -6,10 +6,10 @@ export default function PathFindingVisulizer({speed}) {
 
   speed =  500 - speed * 5 ;
   const [nodes, setNodes] = useState([]);
-  const [startNode  , setStartNode] = useState({row : 10 ,col: 5});
-  const [finishNode , setFinishNode] = useState({row : 20 , col: 20});
-  const n = 24 ;
-  const m = 54 ; 
+  const [startNode  , setStartNode] = useState({row : 12 ,col: 5});
+  const [finishNode , setFinishNode] = useState({row : 12 , col: 20});
+  const n = 15 ;
+  const m = 40 ; 
 
 
   useEffect(() => {

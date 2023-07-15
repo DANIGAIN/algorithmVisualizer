@@ -36,6 +36,15 @@
 .container input:focus{
     border-color: #6200ee;
 }
+.inputIcon{
+    color: darkmagenta;
+    position: absolute;
+    margin-top: 2%;
+    left: 66%;
+}
+.hideeyes{
+    display: none;
+}
 
   
 
