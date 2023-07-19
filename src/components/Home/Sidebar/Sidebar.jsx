@@ -5,10 +5,9 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar }) {
+export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar,bfsState }) {
   const sortRef = useRef(null);
   const searchRef = useRef(null);
-
   let handleClick = (e, field) => {
     field.current.nextElementSibling.classList.toggle("sub-menu");
     field.current.querySelector(".dropdown").classList.toggle("fa-rotate-90");
@@ -26,20 +25,11 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar }) {
             <Link
               className="sub-item"
               name="newArray"
-              style={{textAlign:"center"}}
+              style={{ textAlign: "center" }}
               onClick={() => dispatch({ type: "newArray", payload: ArrayBar })}
             >
               {" "}
               Generate new array{" "}
-            </Link>
-            <Link
-              className="sub-item"
-              name="newGraph"
-              style={{textAlign:"center"}}
-              onClick={() => dispatch({ type: "newGraph", payload: true })}
-            >
-              {" "}
-              Generate graph{" "}
             </Link>
           </div>
           <div className={`item ${isArray ? "" : "isArrayinVisible"}`}>
@@ -101,6 +91,48 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar }) {
               >
                 linear search
               </Link>
+            </div>
+          </div>
+
+          <div className="item">
+
+            <Link
+              className="sub-item"
+              name="newGraph"
+              style={{ textAlign: "center" }}
+              onClick={() => dispatch({ type: "newGraph", payload: true })}
+            >
+              {" "}
+              Generate graph{" "}
+            </Link>
+          </div>
+          <div className={`item ${isGraph ? "" : "isArrayinVisible"}`}>
+            <a
+              className="sub-btn"
+              ref={sortRef}
+              onClick={(e) => handleClick(e, sortRef)}
+            >
+              Path Finding Visualizer
+              <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
+            </a>
+            <div className="sub-menu">
+              <Link
+                className="sub-item"
+                name="bfs"
+                onClick={bfsState}
+              >
+                {" "}
+                Breadth First Search{" "}
+              </Link>
+              <Link
+                className="sub-item"
+                name="bubble"
+                onClick={() => dispatch({ type: "bubble", payload: true })}
+              >
+                {" "}
+                bouble sort{" "}
+              </Link>
+           
             </div>
           </div>
         </div>

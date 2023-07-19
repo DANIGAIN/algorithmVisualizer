@@ -9,7 +9,9 @@ export default function PathFindingVisulizer({speed}) {
   const [startNode  , setStartNode] = useState({row : 12 ,col: 5});
   const [finishNode , setFinishNode] = useState({row : 12 , col: 20});
   const n = 15 ;
-  const m = 40 ; 
+  const m = 40 ;
+  
+
 
 
   useEffect(() => {
@@ -115,7 +117,7 @@ const bfs = () =>
 }
 
 
-const visulizerBFS = async () => {
+let  visulizerBFS = async () => {
   const visitedNode = bfs();
 
   const shortestPath = findSortestPath();
@@ -187,6 +189,9 @@ const visulizerBFS = async () => {
     }
 
 
+  }
+ function clickBfs() {
+     return visulizerBFS();   
   }
 
 
