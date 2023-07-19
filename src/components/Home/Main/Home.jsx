@@ -1,4 +1,4 @@
-import { useReducer, useState} from 'react';
+import { useReducer, useRef, useState} from 'react';
 import SortingVisualizer from '../../SortingVisualizer/SortingVisualizer';
 import SearchingVisualizer from '../../SearchingVisualizer/SearchingVisualizer';
 import { Header } from '../Header/Header';
@@ -68,14 +68,15 @@ export default function Home(props) {
 
     //---------------- path finder visualizer state---------------//
 
-   function bfsState(e)
-   {
-       //bfsClick(e);
-       console.log(e.target)
-   }
-
-
     const [state, dispatch] = useReducer(reducer,initialState);
+
+    const [pathClick , setPathClick] = useState('');
+
+   let  isClickBfsHandeler = (e) =>
+   {
+       setPathClick(e.target.name);
+     
+   }
   
     return (
         <>
@@ -86,15 +87,13 @@ export default function Home(props) {
                   <Structure />
                   {state.IsArray && <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />}
                   {state.IsArray && <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>}
-                  {state.IsGraph && <PathFindingVisulizer speed = {state.animationSpeed}  />}
+                  {state.IsGraph && <PathFindingVisulizer speed = {state.animationSpeed} Click={pathClick} />}
               </div>
               
             <div className="Sidebar">
-                <Sidebar isArray={state.IsArray} isGraph={state.IsGraph} dispatch={dispatch} ArrayBar={state.NumberOfArrayBar}  bfsState={bfsState}/>     
+                <Sidebar isArray={state.IsArray} isGraph={state.IsGraph} dispatch={dispatch} ArrayBar={state.NumberOfArrayBar}  isClickBfs={isClickBfsHandeler}/>     
              </div>
             
-       
-
         </>
     )
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Node from "./Node/Node";
 import "../style.css";
 
-export default function PathFindingVisulizer({speed}) {
+export default function PathFindingVisulizer({speed , Click}) {
 
   speed =  500 - speed * 5 ;
   const [nodes, setNodes] = useState([]);
@@ -11,7 +11,6 @@ export default function PathFindingVisulizer({speed}) {
   const n = 15 ;
   const m = 40 ;
   
-
 
 
   useEffect(() => {
@@ -37,6 +36,11 @@ export default function PathFindingVisulizer({speed}) {
   }, [startNode , finishNode]);
 
 //---------------------------------------------------  breadth first search ---------------------------------//
+
+
+
+   
+
 
 const getNeighbors = (node) =>
 {
@@ -128,7 +132,7 @@ let  visulizerBFS = async () => {
         const node = visitedNode[i];
         const element = document.getElementById(`node-${node.row}-${node.col}`);
         element.classList.add('visited');
-        console.log(element);
+    
         resolve();
       },  speed);
     });
@@ -190,8 +194,11 @@ let  visulizerBFS = async () => {
 
 
   }
- function clickBfs() {
-     return visulizerBFS();   
+
+
+  if(Click == 'bfs')
+  {
+       visulizerBFS();
   }
 
 
@@ -227,9 +234,6 @@ let  visulizerBFS = async () => {
             </div>
           );
         })}
-      </div>
-      <div>
-         <button onClick={visulizerBFS} style={{float:"right"}}>visulizerBFS</button>
       </div>
     </div>
   );

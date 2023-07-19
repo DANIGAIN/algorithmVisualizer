@@ -5,9 +5,10 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar,bfsState }) {
+export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickBfs}) {
   const sortRef = useRef(null);
   const searchRef = useRef(null);
+
   let handleClick = (e, field) => {
     field.current.nextElementSibling.classList.toggle("sub-menu");
     field.current.querySelector(".dropdown").classList.toggle("fa-rotate-90");
@@ -95,7 +96,6 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar,bfsState 
           </div>
 
           <div className="item">
-
             <Link
               className="sub-item"
               name="newGraph"
@@ -106,35 +106,36 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar,bfsState 
               Generate graph{" "}
             </Link>
           </div>
+
           <div className={`item ${isGraph ? "" : "isArrayinVisible"}`}>
             <a
               className="sub-btn"
-              ref={sortRef}
-              onClick={(e) => handleClick(e, sortRef)}
+              ref={searchRef}
+              onClick={(e) => handleClick(e, searchRef)}
             >
-              Path Finding Visualizer
+              Path Finding Algorithm
               <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
             </a>
             <div className="sub-menu">
               <Link
                 className="sub-item"
                 name="bfs"
-                onClick={bfsState}
+                onClick={isClickBfs}
               >
-                {" "}
-                Breadth First Search{" "}
+                Breadth First Search
               </Link>
               <Link
                 className="sub-item"
-                name="bubble"
-                onClick={() => dispatch({ type: "bubble", payload: true })}
+                name="dfs"
+                // onClick=
               >
-                {" "}
-                bouble sort{" "}
+                Depth First Search
               </Link>
-           
             </div>
           </div>
+
+
+
         </div>
 
         <div className={`footer ${isGraph ? "" : "invisible"}`}>
