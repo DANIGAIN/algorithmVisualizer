@@ -68,6 +68,7 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickB
               </Link>
             </div>
           </div>
+      
           <div className={`item ${isArray ? "" : "isArrayinVisible"}`}>
             <a
               className="sub-btn"
