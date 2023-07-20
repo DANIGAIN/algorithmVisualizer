@@ -1,0 +1,72 @@
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%,-50%) scale(1);
+}
+.contentBox{
+    position: relative;
+    width: 600px;
+    height: 600px;
+    background: #aa9494 ;
+    border-radius: 10%;
+    display: flex;
+    box-shadow: 0 5px 15px rgba(0, 0,0,1);
+}
+
+.content
+{
+    padding: 40px;
+    margin: 5px auto;
+}
+
+.content label{
+    color: #726f6f;
+}
+.contentBox .content h2{
+
+    position: relative;
+    display: flex;
+    left: 200px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  
+}
+.close{
+    position: absolute;
+    top:20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #f3f3f3 url('../../../../public/img.png');
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+.show{
+
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+
+/* ----------------  input control -------------------- */
+
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #eee8e8;
+  }
+
+  

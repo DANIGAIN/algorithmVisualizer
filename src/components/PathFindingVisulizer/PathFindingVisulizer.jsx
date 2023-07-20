@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import Node from "./Node/Node";
 import "../style.css";
 
-export default function PathFindingVisulizer({speed , Click}) {
+export default function PathFindingVisulizer({speed , Click ,NumberOfRow , NumberOfCol ,nodeValue,setStartNode ,setFinishNode ,startNode,finishNode}) {
 
   speed =  500 - speed * 5 ;
   const [nodes, setNodes] = useState([]);
-  const [startNode  , setStartNode] = useState({row : 12 ,col: 5});
-  const [finishNode , setFinishNode] = useState({row : 12 , col: 20});
-  const n = 15 ;
-  const m = 40 ;
+  
+
+  const n = NumberOfRow ;
+  const m = NumberOfCol;
   
 
 
@@ -227,6 +227,7 @@ let  visulizerBFS = async () => {
                             isWall = {isWall}
                             row = {row}
                             col = {col}
+                            nodeValue={nodeValue}
                          />
                   </div>
                 );

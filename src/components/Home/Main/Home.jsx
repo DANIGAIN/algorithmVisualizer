@@ -7,6 +7,7 @@ import Structure from './Structure';
 import PathFindingVisulizer from '../../PathFindingVisulizer/PathFindingVisulizer';
 import './style.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Modal from '../Modal/Modal';
 
 const auth = getAuth();
 
@@ -69,8 +70,13 @@ export default function Home(props) {
     //---------------- path finder visualizer state---------------//
 
     const [state, dispatch] = useReducer(reducer,initialState);
-
     const [pathClick , setPathClick] = useState('');
+    const [permisionGraph , setPermissionGraph] = useState(false);
+    const [NumberOfRow ,setNumberofRow] = useState(15);
+    const [NumberOfCol , setNumberofCol] = useState(40);
+    const [nodeValue , setNodeValue] = useState(30);
+    const [startNode  , setStartNode] = useState({row : 12 ,col: 5});
+    const [finishNode , setFinishNode] = useState({row : 12 , col: 20});
 
    let  isClickBfsHandeler = (e) =>
    {
@@ -84,10 +90,37 @@ export default function Home(props) {
                 <Header name={props.name}  dispatch={dispatch} speed={state.animationSpeed}/>
             </div> 
               <div className="main">
-                  <Structure />
+                   <Structure />
                   {state.IsArray && <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />}
                   {state.IsArray && <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>}
-                  {state.IsGraph && <PathFindingVisulizer speed = {state.animationSpeed} Click={pathClick} />}
+                  {state.IsGraph && <Modal 
+                  
+                        setPermissionGraph={setPermissionGraph} 
+                        setNumberofRow={setNumberofRow}
+                        setNumberofCol={setNumberofCol}
+                        NumberOfRow={NumberOfRow}
+                        NumberOfCol={NumberOfCol}
+                        setNodeValue={setNodeValue}
+                        nodeValue ={nodeValue}
+                        setStartNode={setStartNode}
+                        setFinishNode={setFinishNode}
+                        startNode={startNode}
+                        finishNode={finishNode}
+
+                   />}
+                  {permisionGraph && <PathFindingVisulizer 
+                  
+                      speed = {state.animationSpeed}
+                      Click={pathClick} 
+                      NumberOfRow={NumberOfRow} 
+                      NumberOfCol={NumberOfCol} 
+                      nodeValue={nodeValue} 
+                      setStartNode={setStartNode}
+                      setFinishNode={setFinishNode}
+                      startNode={startNode}
+                      finishNode={finishNode}
+                      
+                      />} 
               </div>
               
             <div className="Sidebar">

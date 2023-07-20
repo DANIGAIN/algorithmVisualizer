@@ -151,10 +151,9 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickB
           <div id="SearchBox"></div>
           <br />
 
-          <h4 className="heading"> Wall Node</h4>
-          <div id="wallBox"></div>
+          {/* <h4 className="heading"> Wall Node</h4>
+          <div id="wallBox"></div> */}
 
-          <br />
           <h4 className="heading"> Path Node </h4>
           <div id="sortestpatchBox"></div>
         </div>

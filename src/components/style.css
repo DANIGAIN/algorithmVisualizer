@@ -22,7 +22,8 @@
   }
    
     .responsive {
-      background-color: #b7acac;
+       display: flex;
+       background-color: #b7acac;
        position: relative;
        border: 5px solid rgb(0, 0, 0);
        border-radius: 10px;
@@ -46,12 +47,9 @@
     left: 420px ;
 
    }
-
    .node
    {
-
-      width: 25px;
-      height: 25px;
+    
       outline: 1px solid rgb(134, 128, 128);
       border: 1px solid #ccc;
       display: inline-block;
