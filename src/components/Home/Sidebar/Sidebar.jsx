@@ -8,6 +8,7 @@ import "./style.css";
 export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickBfs}) {
   const sortRef = useRef(null);
   const searchRef = useRef(null);
+  const pathRef = useRef(null);
 
   let handleClick = (e, field) => {
     field.current.nextElementSibling.classList.toggle("sub-menu");
@@ -83,16 +84,12 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickB
                 className="sub-item"
                 name="binary"
                 onClick={() => dispatch({ type: "binary", value: true })}
-              >
-                binary search
-              </Link>
+              >binary search</Link>
               <Link
                 className="sub-item"
                 name="linear"
                 onClick={() => dispatch({ type: "linear", value: true })}
-              >
-                linear search
-              </Link>
+              >linear search</Link>
             </div>
           </div>
 
@@ -111,8 +108,8 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickB
           <div className={`item ${isGraph ? "" : "isArrayinVisible"}`}>
             <a
               className="sub-btn"
-              ref={searchRef}
-              onClick={(e) => handleClick(e, searchRef)}
+              ref={pathRef}
+              onClick={(e) => handleClick(e, pathRef)}
             >
               Path Finding Algorithm
               <FontAwesomeIcon icon={faAngleRight} className="fas dropdown" />
