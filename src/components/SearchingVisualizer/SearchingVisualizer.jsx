@@ -5,7 +5,6 @@ import "../style.css";
 export default function SearchingVisualizer({ newArray, newClick, speed }) {
   speed = 1000 - speed * 10;
   const [searchElement, setSearchElement] = useState(10);
-  const [isDoneLinearSearch,setIsDoneLinearSearch] = useState(-1);
 
   useEffect(() => {
 
@@ -17,13 +16,15 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
 
   async function LinearSearch() {
     const element = document.getElementsByClassName("array-bar");
+    let flag = 0 ;
+
     for (let i = 0; i < element.length; i++) {
       element[i].style.backgroundColor = "blue";
       if (parseInt(element[i].style.height) === parseInt(searchElement)) {
         element[i].style.backgroundColor = "green";
-        setIsDoneLinearSearch(1);
+        flag = 1 ; 
       }
-      else if(isDoneLinearSearch == 1)
+      else if(flag == 1)
       {
         element[i].style.backgroundColor = "black";
       }
@@ -36,8 +37,7 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
     try {
       if (newClick === "linear") {
         LinearSearch().then(() => {
-          if(isDoneLinearSearch == -1)
-               alert("not Found this List");
+          alert("not Found this List");
         });
       }
     } catch (err) {
