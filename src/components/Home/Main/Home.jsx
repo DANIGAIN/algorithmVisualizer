@@ -12,6 +12,11 @@ import Modal from '../Modal/Modal';
 const auth = getAuth();
 
 
+function sortArray(array) {
+    return array.slice().sort((a, b) => a - b);
+}
+
+
 const initialState =
 {
     animationSpeed: 10,
@@ -23,17 +28,25 @@ const initialState =
 
 }
 
+
+
 let reducer = function(state ,action )
 {
     switch(action.type)
     {
         case "newArray":
-            const randomArray = [];
+            let randomArray = [];
             for (let i = 0; i < state.NumberOfArrayBar; i++) {
               randomArray.push(Math.floor(Math.random() * 500));
             }
             return { ...state, randomArray ,IsArray: true , IsGraph: false};
 
+        case "sortedArray":
+     
+            let sortedArray = sortArray(state.randomArray);
+    
+            return { ...state, randomArray: sortedArray, IsArray: true, IsGraph: false };
+    
         case "newGraph":
 
             return {...state , IsGraph: action.payload,IsArray:false}
@@ -91,7 +104,12 @@ export default function Home(props) {
             </div> 
               <div className="main">
                    <Structure />
-                  {state.IsArray && <SearchingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray} />}
+                  {state.IsArray && <SearchingVisualizer 
+                        speed ={state.animationSpeed} 
+                        newClick={state.click} 
+                        newArray={state.randomArray}
+                        dispatch={dispatch} 
+                  />}
                   {state.IsArray && <SortingVisualizer speed ={state.animationSpeed} newClick={state.click} newArray={state.randomArray}/>}
                   {state.IsGraph && <Modal 
                   
