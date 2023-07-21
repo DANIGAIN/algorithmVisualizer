@@ -17,7 +17,7 @@ const initialState =
     animationSpeed: 10,
     click: "",
     randomArray: [] ,
-    NumberOfArrayBar: 35,
+    NumberOfArrayBar: 26,
     IsGraph: false,
     IsArray: false
 
@@ -73,7 +73,7 @@ export default function Home(props) {
     const [pathClick , setPathClick] = useState('');
     const [permisionGraph , setPermissionGraph] = useState(false);
     const [NumberOfRow ,setNumberofRow] = useState(15);
-    const [NumberOfCol , setNumberofCol] = useState(40);
+    const [NumberOfCol , setNumberofCol] = useState(34);
     const [nodeValue , setNodeValue] = useState(30);
     const [startNode  , setStartNode] = useState({row : 12 ,col: 5});
     const [finishNode , setFinishNode] = useState({row : 12 , col: 20});

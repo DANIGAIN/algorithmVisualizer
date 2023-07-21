@@ -4,6 +4,7 @@ import "../style.css";
 
 export default function SearchingVisualizer({ newArray, newClick, speed }) {
   speed = 1000 - speed * 10;
+<<<<<<< HEAD
   const [searchElement, setSearchElement] = useState('');
   //-------------- binary  -->
   const [foundIndex, setFoundIndex] = useState(-1);
@@ -18,6 +19,29 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
     // if(!searchElement|| isNaN(searchElement)){
     //   setSearchElement(prompt("Please Enter any number 0 to 500"));
     // }
+=======
+  const [searchElement, setSearchElement] = useState(10);
+  const [isModal, setIsModal] = useState(false);
+
+  async function LinearSearch() {
+    const element = document.getElementsByClassName("array-bar");
+    let flag = 0;
+console.log(searchElement);
+console.log(typeof(searchElement));
+    for (let i = 0; i < newArray.length; i++) {
+      console.log(newArray[i]);
+    //   element[i].style.backgroundColor = "blue";
+    //   if (parseInt(element[i].style.height) === parseInt(searchElement)) {
+    //     element[i].style.backgroundColor = "green";
+    //     flag = 1;
+    //   }
+    //   else if (flag == 1) {
+    //     element[i].style.backgroundColor = "black";
+    //   }
+    //   await new Promise((resolve) => setTimeout(resolve, speed));
+    // }
+
+>>>>>>> origin
 
 
     for (let i = 0; i < newArray.length; i++) {
@@ -35,6 +59,7 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
     // }
     console.log( newArray[i]);
   }
+<<<<<<< HEAD
 }
 
 
@@ -95,14 +120,43 @@ export default function SearchingVisualizer({ newArray, newClick, speed }) {
   //     console.log(err);
   //   }
   // }, [newClick]);
+=======
+  }
+  useEffect(() => {
+    try {
+      if (newClick === "linear") {
+        setIsModal(true)
+        LinearSearch().then(() => {
+          
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [newClick]);
+
+//---------------------------------Modal------------------------//
+>>>>>>> origin
 
 
   //-------------------------------------------------------------------------------//
   return (
     <>
-      <div className="array-container">
-       { newArray.map((value, index) => (
-            <div
+
+      <div className={`modal2 ${!isModal?'hide':" "}`}>
+        
+
+          <div >
+            <button onClick={(e)=>{setIsModal(e.target.value)}}>X</button>
+            <label htmlFor="Row" className="text">Enter any number</label>
+            <input type="text" value={searchElement} onChange={(e)=>{setSearchElement(e.target.value)}} />
+          </div>
+        
+      </div>
+      <div className={`array-container ${isModal?`hide`:" "}`}>
+
+        {newArray.map((value, index) => (
+          <div
             className="array-bar"
             key={index}
             style={{ height: `${value}px` }}
