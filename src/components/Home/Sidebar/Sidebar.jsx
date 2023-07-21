@@ -122,13 +122,13 @@ export default function Sidebar({ isArray, isGraph, dispatch, ArrayBar ,isClickB
               >
                 Breadth First Search
               </Link>
-              <Link
+              {/* <Link
                 className="sub-item"
                 name="dfs"
                 // onClick=
               >
                 Depth First Search
-              </Link>
+              </Link> */}
             </div>
           </div>
 

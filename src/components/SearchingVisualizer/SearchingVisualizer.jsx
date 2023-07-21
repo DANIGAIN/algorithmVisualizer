@@ -27,6 +27,7 @@ export default function SearchingVisualizer({ newArray, newClick, speed, dispatc
       if (parseInt(element[i].style.height) === parseInt(searchElement)) {
         updatedColors[i] = "green";
         setElementColors(updatedColors);
+        await new Promise((resolve) => setTimeout(resolve, speed));
         alert(" This value is Found in the  List")
         break;
       }
