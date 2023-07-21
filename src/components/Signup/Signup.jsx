@@ -26,8 +26,6 @@ export default function Signup() {
 
         createUserWithEmailAndPassword(auth, values.email, values.pass).then(
             async (res) => {
-
-
                 const user = res.user;
                 await updateProfile(user,
                     {
@@ -41,7 +39,6 @@ export default function Signup() {
         })
 
     }
-
 
 
     return (

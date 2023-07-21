@@ -4,7 +4,7 @@ import { faEyeSlash,faEye } from '@fortawesome/free-solid-svg-icons'
 import styles from  './InputControl.module.css'
 
  export default function InputControl(props) {
-   const{label,type,disabled,placeholder}=props
+   const{label,type,disabled,placeholder ,onChange}=props
 
    const [showPassword, setshowPassword] = useState(true);
    const handelCheck=()=>{
@@ -18,7 +18,7 @@ import styles from  './InputControl.module.css'
 
                 />
 
-                <input label={label}type={!showPassword?'text':type}placeholder={placeholder}/> 
+                <input label={label}type={!showPassword?'text':type} placeholder={placeholder} onChange={onChange}/> 
 
            </div>
         )
