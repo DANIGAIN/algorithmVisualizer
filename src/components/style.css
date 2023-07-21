@@ -80,3 +80,28 @@
 
       background-color: rgb(194, 196, 82);
    }
+
+
+   /*-------------------------------modal...........................*/
+
+   .modal2{
+      display: flex;
+      position: absolute;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 1px 4px 5px 8px #888888;
+   }
+   .modal2 .text{
+      color: black;
+   }
+   .modal2 button{
+      float: right;
+      margin-top: -13px;
+      border-radius: 50%;
+      padding: 2px;
+      
+   }
+   .hide{
+      display: none;
+   }
