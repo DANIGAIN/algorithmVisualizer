@@ -23,7 +23,7 @@ const initialState =
     animationSpeed: 10,
     click: "",
     randomArray: [] ,
-    NumberOfArrayBar: 26,
+    NumberOfArrayBar: 25,
     IsGraph: false,
     IsArray: false
 

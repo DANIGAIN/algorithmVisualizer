@@ -1,7 +1,7 @@
 
 // ------------------------------------------- end use case function --------------------//
 
- import '../style.css'
+ import '../style.css';
 function SortingVisualizer({ newArray ,newClick ,speed}) {
 
     speed =  1000 - speed * 10 ;
@@ -33,6 +33,11 @@ function SortingVisualizer({ newArray ,newClick ,speed}) {
 
 
                 }
+                await new Promise((resolve) =>
+                        setTimeout(() => {
+                            resolve();
+                        }, speed)
+                    );
                 element[j].style.backgroundColor = 'cyan';
                 element[j + 1].style.backgroundColor = 'cyan';
 
